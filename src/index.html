@@ -1,1 +1,15 @@
-<my-app>loading</my-app>
+<head>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+  <div id='map' style='width: 400px; height: 300px;'></div>
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWF0dGVvbGllcmEiLCJhIjoiY2thNTNuaWNuMDZneDNpbnV3dWxiMHc5OCJ9.Y4wpFUM40ETSHi3B98U6tQ';
+    var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11'
+    });
+    </script>
+  <my-app>loading</my-app>
+</body>
