@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, FormBuilder, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
-import {AccountService} from '../../core/services/account.service'
+import {AccountService} from '../../core/service/account.service'
 
 @Component({
   selector: 'app-register',
@@ -13,7 +13,7 @@ export class RegisterComponent {
 
   registerForm : FormGroup
 
-  matcher = new RegisterErrorStateMatcher();
+  matcher = new RegisterErrorStateMatcher()
 
   constructor(
     private _service : AccountService,

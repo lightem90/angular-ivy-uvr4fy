@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
-import {AccountService} from '../../core/services/account.service'
+import {AccountService} from '../../core/service/account.service'
 
 @Component({
   selector: 'app-login',

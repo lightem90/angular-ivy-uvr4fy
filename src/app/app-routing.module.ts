@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, CanActivateChild } from '@angular/router';
 
 import { LoginComponent } from './static/login/login.component'
-import { RegisterComponent } from './static/register/register.component';
+import { RegisterComponent } from './static/register/register.component'
 import { NotFoundComponent } from './static/not-found/not-found.component';
 import { AboutComponent } from './static/about/about.component';
 import { ContactsComponent } from './static/contacts/contacts.component';
