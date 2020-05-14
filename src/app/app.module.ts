@@ -8,6 +8,12 @@ import { MaterialModule } from './material.module';
 
 
 import * as firebase from 'firebase/app';
+import { LoginComponent } from './static/login/login.component';
+import { RegisterComponent } from './static/register/register.component'
+import { NotFoundComponent } from './static/not-found/not-found.component';
+import { AboutComponent } from './static/about/about.component';
+import { FaqComponent } from './static/faq/faq.component';
+import { ContactsComponent } from './static/contacts/contacts.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -25,7 +31,15 @@ if (!firebase.apps.length) {
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, MaterialModule ],
-  declarations: [ AppComponent, HelloComponent ],
+  declarations: [ 
+    AppComponent, 
+    HelloComponent, 
+    LoginComponent, 
+    RegisterComponent, 
+    NotFoundComponent, 
+    AboutComponent, 
+    FaqComponent, 
+    ContactsComponent,  ],
   providers: [FirebaseHelper, AccountService],
   bootstrap:    [ AppComponent ]
 })
