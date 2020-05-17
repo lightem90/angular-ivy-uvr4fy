@@ -12,8 +12,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
-import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
+import { AppComponent } from './app/app.component';
 
 import { LoginComponent } from './static/login/login.component';
 import { RegisterComponent } from './static/register/register.component'
@@ -58,8 +57,7 @@ export function translateHttpLoaderFactory(http: HttpClient) {
     AppRoutingModule, 
     MaterialModule],
   declarations: [ 
-    AppComponent, 
-    HelloComponent, 
+    AppComponent,
     LoginComponent, 
     RegisterComponent, 
     NotFoundComponent, 

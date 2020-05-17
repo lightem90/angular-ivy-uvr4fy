@@ -7,7 +7,7 @@ import { NotFoundComponent } from './static/not-found/not-found.component';
 import { AboutComponent } from './static/about/about.component';
 import { ContactsComponent } from './static/contacts/contacts.component';
 import { FaqComponent } from './static/faq/faq.component';
-import { AppComponent } from './app.component'
+import { AppComponent } from './app/app.component'
 
 import { canActivate } from '@angular/fire/auth-guard';
 import { AccountService } from './core/service/account.service';
