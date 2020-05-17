@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, CanActivateChild } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 
 import { LoginComponent } from './static/login/login.component'
 import { RegisterComponent } from './static/register/register.component'
@@ -9,7 +9,6 @@ import { ContactsComponent } from './static/contacts/contacts.component';
 import { FaqComponent } from './static/faq/faq.component';
 import { AppComponent } from './app/app.component'
 
-import { canActivate } from '@angular/fire/auth-guard';
 import { AccountService } from './core/service/account.service';
 
 const routes: Routes = [
@@ -19,6 +18,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent},
   { path: 'contacts', component: ContactsComponent},
   { path: 'faq', component: FaqComponent},
+  { path: '', component: AppComponent},
   // { path: '**', redirectTo: '/not-found'}
   { path: '**', redirectTo: '/not-found'} // MUST BE LAST, IT IDENTIFIES ALL PATHS!
 ];

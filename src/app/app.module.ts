@@ -27,6 +27,7 @@ import { FirebaseHelper } from './core/service/firebase-helper';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
+import { MissionMapComponent } from './app/mission-map/mission-map.component';
 
 
 if (!firebase.apps.length) {
@@ -58,6 +59,7 @@ export function translateHttpLoaderFactory(http: HttpClient) {
     MaterialModule],
   declarations: [ 
     AppComponent,
+    MissionMapComponent,
     LoginComponent, 
     RegisterComponent, 
     NotFoundComponent, 

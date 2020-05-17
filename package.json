@@ -18,8 +18,11 @@
     "@firebase/app": "^0.6.3",
     "@ngx-translate/core": "12.1.2",
     "@ngx-translate/http-loader": "4.0.0",
+    "@types/mapbox-gl": "^1.10.1",
+    "@types/node": "^14.0.1",
     "angularfire2": "5.4.2",
     "firebase": "7.14.3",
+    "mapbox-gl": "^1.10.1",
     "rxjs": "6.5.5",
     "tslib": "1.13.0",
     "zone.js": "0.10.3"
