@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-import { AngularFireDatabase, AngularFireList , AngularFireObject } from '@angular/fire/database';
-import { AngularFireStorage } from '@angular/fire/storage';
-import { AngularFireAuth } from '@angular/fire/auth';
-
 import firebase from 'firebase';
+import { auth } from 'firebase/app';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { AngularFireDatabase, AngularFireList , AngularFireObject } from '@angular/fire/database';
+
 
 import { FirebaseConstant } from './firebase-constant'
 import { MissionService } from './mission.service';
@@ -22,7 +23,7 @@ export class FirebaseHelper
   constructor(
     private auth: AngularFireAuth,
     private database: AngularFireDatabase,
-    private storage: AngularFireStorage) 
+    private storage: AngularFireStorage)
   {
     let self = this
     // recommended way to get the current user

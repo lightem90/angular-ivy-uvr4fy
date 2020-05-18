@@ -31,8 +31,8 @@ import { MissionEditorComponent } from './app/mission-editor/mission-editor.comp
 import { MissionViewerComponent } from './app/mission-viewer/mission-viewer.component';
 
 import { AccountService } from './core/service/account.service';
-import { FirebaseHelper } from './core/service/firebase-helper';
 import { MissionService } from './core/service/mission.service';
+import { FirebaseHelper } from './core/service/firebase-helper';
 
 
 if (!firebase.apps.length) {
@@ -46,6 +46,9 @@ export function translateHttpLoaderFactory(http: HttpClient) {
 @NgModule({
   imports:      [ 
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -57,9 +60,6 @@ export function translateHttpLoaderFactory(http: HttpClient) {
     BrowserModule, 
     FormsModule, 
     ReactiveFormsModule,
-    AngularFireStorageModule,
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
     AppRoutingModule, 
     MaterialModule],
   declarations: [ 
