@@ -11,6 +11,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import * as firebase from 'firebase/app';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
@@ -32,7 +33,6 @@ import { MissionViewerComponent } from './app/mission-viewer/mission-viewer.comp
 import { AccountService } from './core/service/account.service';
 import { FirebaseHelper } from './core/service/firebase-helper';
 import { MissionService } from './core/service/mission.service';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 
 
 if (!firebase.apps.length) {
@@ -40,7 +40,7 @@ if (!firebase.apps.length) {
 }
 
 export function translateHttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http)
 }
 
 @NgModule({

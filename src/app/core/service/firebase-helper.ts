@@ -8,6 +8,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
 
 import { FirebaseConstant } from './firebase-constant'
+import { MissionService } from './mission.service';
 
 @Injectable()
 export class FirebaseHelper
@@ -32,6 +33,8 @@ export class FirebaseHelper
     )
     // Firebase references that are listened to.
     this.firebaseRefs = [];
+
+    var aa = new MissionService(this)
   }
 
   login(email: string, password: string) {
