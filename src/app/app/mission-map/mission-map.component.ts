@@ -12,9 +12,9 @@ export class MissionMapComponent implements OnInit {
   
   map: mapboxgl.Map;
   style = 'mapbox://styles/mapbox/streets-v11';
-  lat = 37.75;
-  lng = -122.41;
-  zoom = 13
+  lat = 43.9092;
+  lng = 12.9127;
+  zoom = 12.89
 
   constructor() { }
 
