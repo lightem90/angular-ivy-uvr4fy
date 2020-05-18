@@ -1,4 +1,5 @@
 import { Component, VERSION } from '@angular/core';
+import { FirebaseApp } from '@angular/fire';
 
 @Component({
   selector: 'my-app',
@@ -7,4 +8,7 @@ import { Component, VERSION } from '@angular/core';
 })
 export class AppComponent  {
   name = 'Angular ' + VERSION.major;
+  constructor(public app: FirebaseApp) {
+
+  }
 }
