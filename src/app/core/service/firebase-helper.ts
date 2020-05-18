@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-import { AngularFireDatabase, AngularFireList , AngularFireObject } from 'angularfire2/database';
-import { AngularFireStorage } from 'angularfire2/storage';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, AngularFireList , AngularFireObject } from '@angular/fire/database';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 import firebase from 'firebase';
 
@@ -32,7 +32,7 @@ export class FirebaseHelper
       }      
     )
     // Firebase references that are listened to.
-    this.firebaseRefs = [];
+    this.firebaseRefs = []
 
     var aa = new MissionService(this)
   }
