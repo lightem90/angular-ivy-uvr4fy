@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 
 import mapboxgl = require('mapbox-gl');
+import { MissionService } from '../../core/service/mission.service';
 
 @Component({
   selector: 'app-mission-map',
@@ -17,7 +18,9 @@ export class MissionMapComponent implements OnInit {
   lng = 12.9127;
   zoom = 12.89
 
-  constructor() { }
+  constructor(
+    private _missionService : MissionService
+  ) { }
 
   ngOnInit() {    
     
@@ -37,7 +40,17 @@ export class MissionMapComponent implements OnInit {
         this.lng = data.lngLat.lng
         this.zoom = this.map.getZoom()
       })
-    }    
+    }
+
+    this._missionService
+      .getAllActiveMissions()
+      .forEach(m => {
+        var marker = new mapboxgl.Marker({
+        draggable: false
+        })
+        .setLngLat([m.meetingPoint.latitude, m.meetingPoint.longitude])
+        .addTo(this.map);
+      })    
   }
 
   _debugEnabled() {

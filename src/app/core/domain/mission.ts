@@ -10,8 +10,8 @@ export class MeetingPoint {
   constructor(
     public latitude: number = -1,
     public longitude: number = -1,
-    private address: string = "",
-    private finalized: boolean = false) {
+    public address: string = "",
+    public finalized: boolean = false) {
 
   }
 }
