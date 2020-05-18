@@ -1,14 +1,17 @@
+import { FirebaseHelper } from "../service/firebase-helper";
+
 export enum MissionType {
   Garbage, 
   Assistance,
   GreenMaintenance
 }
 
-export class Coordinate {
+export class MeetingPoint {
   constructor(
-    public latitude: number,
-    public longitude: number
-  ) {
+    public latitude: number = -1,
+    public longitude: number = -1,
+    private address: string = "",
+    private finalized: boolean = false) {
 
   }
 }
@@ -20,17 +23,35 @@ export class Requirement {
 
 export class Mission {
   constructor (
-    public uid: string = "",
     public ownerUid: string,
+    public uid: string = "",
     public name: string = "",
     public description: string = "",
-    public missionType : MissionType = null,
-    public startDate: Date = null,
-    public endDate: Date = null,
-    public startPosition : Coordinate = null,    
-    public endPosition : Coordinate = null,
-    public requirement : Requirement = null,
+    public missionType : MissionType = MissionType.Garbage,
+    public startDate: string = "",
+    public endDate: string = "",
+    public meetingPoint : MeetingPoint = new MeetingPoint(),
+    public requirement : Requirement = new Requirement(),
     public partecipants: string[] = []) {
 
+  }
+}
+
+//Business class for the mission editor
+export class MissionSession {
+
+  private mission: Mission = null
+
+  constructor(
+    private _firebase: FirebaseHelper)  {
+
+  }
+  
+  startSession() {
+    this.mission = new Mission("ciccio") // <-- Logged user
+  }
+
+  endSession() {
+    //firebase transaction to confirm
   }
 }

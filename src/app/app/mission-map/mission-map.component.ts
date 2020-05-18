@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../environments/environment';
+
+import { environment } from '../../../environments/environment';
 
 import mapboxgl = require('mapbox-gl');
 
@@ -30,12 +31,17 @@ export class MissionMapComponent implements OnInit {
     })
     // Add map controls
     this.map.addControl(new mapboxgl.NavigationControl())
-    this.map.on('mousemove', (data) => {
-      this.lat = data.lngLat.lat
-      this.lng = data.lngLat.lng
-      this.zoom = this.map.getZoom()
-    })
-    
+    if (this._debugEnabled()){    
+        this.map.on('mousemove', (data) => {
+        this.lat = data.lngLat.lat
+        this.lng = data.lngLat.lng
+        this.zoom = this.map.getZoom()
+      })
+    }    
+  }
+
+  _debugEnabled() {
+    return !environment.production
   }
 
 }

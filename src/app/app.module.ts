@@ -21,7 +21,6 @@ import { AboutComponent } from './static/about/about.component';
 import { FaqComponent } from './static/faq/faq.component';
 import { ContactsComponent } from './static/contacts/contacts.component';
 
-import { environment } from './environments/environment';
 import { AccountService } from './core/service/account.service';
 import { FirebaseHelper } from './core/service/firebase-helper';
 
@@ -30,6 +29,7 @@ import { MaterialModule } from './material.module';
 import { MissionMapComponent } from './app/mission-map/mission-map.component';
 import { MissionEditorComponent } from './app/mission-editor/mission-editor.component';
 import { MissionViewerComponent } from './app/mission-viewer/mission-viewer.component';
+import { environment } from '../environments/environment';
 
 
 if (!firebase.apps.length) {

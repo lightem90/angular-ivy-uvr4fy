@@ -1,7 +1,9 @@
 
 <div class="map" id="map" class="match-parent"></div>
 
-<pre id="info">
+<pre 
+  *ngIf="_debugEnabled()"
+  id="info">
   <span>Lat: {{lat}} </span>
   <span>Long: {{lng}} </span>
   <span>Zoom: {{zoom}} </span>
