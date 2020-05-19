@@ -45,11 +45,9 @@ export class MissionMapComponent implements OnInit {
     this._missionService
       .getAllActiveMissions()
       .forEach(m => {
-        var marker = new mapboxgl.Marker({
-        draggable: false
-        })
-        .setLngLat([m.meetingPoint.latitude, m.meetingPoint.longitude])
-        .addTo(this.map);
+        new mapboxgl.Marker()
+        .setLngLat([m.meetingPoint.longitude, m.meetingPoint.latitude])
+        .addTo(this.map)
       })    
   }
 

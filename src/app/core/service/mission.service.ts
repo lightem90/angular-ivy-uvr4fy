@@ -8,8 +8,7 @@ export class MissionService {
   session: MissionSession = null
   activeMissions : Mission[] = []
 
-  constructor(
-    private _helper : FirebaseHelper) {
+  constructor() {
     
     const testM = new Mission("ciccio")
     testM.meetingPoint.latitude = 43.908083
@@ -21,7 +20,7 @@ export class MissionService {
 
 
   startMission() {
-    this.session = new MissionSession(this._helper)
+    //this.session = new MissionSession(this._helper)
   }
 
   getAllActiveMissions() : Mission[] {

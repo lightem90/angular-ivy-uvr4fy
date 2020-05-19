@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 import firebase from 'firebase';
-import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFireDatabase, AngularFireList , AngularFireObject } from '@angular/fire/database';
@@ -14,11 +13,12 @@ import { MissionService } from './mission.service';
 @Injectable()
 export class FirebaseHelper
 {
-  private _authChangedSubject = new Subject<firebase.User>();
-  private firebaseRefs : firebase.database.Reference[]
+  private _currentUser : firebase.User
 
-  _currentUser : firebase.User
+  private _authChangedSubject = new Subject<firebase.User>();
   authChanged : Observable<firebase.User> = this._authChangedSubject
+
+  private firebaseRefs : firebase.database.Reference[]
 
   constructor(
     private auth: AngularFireAuth,
@@ -34,8 +34,6 @@ export class FirebaseHelper
     )
     // Firebase references that are listened to.
     this.firebaseRefs = []
-
-    var aa = new MissionService(this)
   }
 
   login(email: string, password: string) {
