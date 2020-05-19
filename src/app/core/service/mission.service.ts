@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Mission, MissionSession } from '../domain/mission';
 import { FirebaseHelper } from './firebase-helper';
+import { GeoJson } from '../domain/geojson';
 
 @Injectable()
 export class MissionService {
 
+  aa : GeoJson
   session: MissionSession = null
   activeMissions : Mission[] = []
 
@@ -16,6 +18,7 @@ export class MissionService {
     testM.meetingPoint.finalized = true
     this.activeMissions.push(testM)
     
+
   }
 
 
@@ -23,8 +26,9 @@ export class MissionService {
     //this.session = new MissionSession(this._helper)
   }
 
-  getAllActiveMissions() : Mission[] {
-    return this.activeMissions.filter(m => m.meetingPoint.finalized)
+  getAllActiveMissions() : Promise<GeoJson[]> {
+    return new Promise<GeoJson[]>(r => [])
+    //return new Promise<Mission[]>(r => this.activeMissions.filter(m => m.meetingPoint.finalized))
   }
 
 }

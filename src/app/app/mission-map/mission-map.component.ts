@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 
 import mapboxgl = require('mapbox-gl');
 import { MissionService } from '../../core/service/mission.service';
+import { FeatureCollection } from '../../core/domain/geojson';
 
 @Component({
   selector: 'app-mission-map',
@@ -12,6 +13,7 @@ import { MissionService } from '../../core/service/mission.service';
 })
 export class MissionMapComponent implements OnInit {
   
+  source : any;
   map: mapboxgl.Map;
   style = 'mapbox://styles/mapbox/streets-v11';
   lat = 43.9092;
@@ -19,8 +21,9 @@ export class MissionMapComponent implements OnInit {
   zoom = 12.89
 
   constructor(
-    private _missionService : MissionService
-  ) { }
+    private _missionService : MissionService) {
+
+  }
 
   ngOnInit() {    
     
@@ -34,6 +37,19 @@ export class MissionMapComponent implements OnInit {
     })
     // Add map controls
     this.map.addControl(new mapboxgl.NavigationControl())
+
+    this.map.on('load', (event) => {
+      this.map.addSource('firebase', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: []
+        }
+      })
+    })
+
+    this.source = this.map.getSource('firebase') 
+
     if (this._debugEnabled()){    
         this.map.on('mousemove', (data) => {
         this.lat = data.lngLat.lat
@@ -44,11 +60,15 @@ export class MissionMapComponent implements OnInit {
 
     this._missionService
       .getAllActiveMissions()
-      .forEach(m => {
-        new mapboxgl.Marker()
-        .setLngLat([m.meetingPoint.longitude, m.meetingPoint.latitude])
-        .addTo(this.map)
-      })    
+      .then(res => {
+        let data = new FeatureCollection(res)
+        this.source = data
+      })
+      // .forEach(m => {
+      //   new mapboxgl.Marker()
+      //   .setLngLat([m.meetingPoint.longitude, m.meetingPoint.latitude])
+      //   .addTo(this.map)
+      // })    
   }
 
   _debugEnabled() {
