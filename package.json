@@ -16,6 +16,7 @@
     "@angular/platform-browser-dynamic": "9.1.7",
     "@angular/router": "9.1.7",
     "@firebase/app": "0.6.3",
+    "@mapbox/mapbox-gl-geocoder": "^4.5.1",
     "@ngx-translate/core": "12.1.2",
     "@ngx-translate/http-loader": "4.0.0",
     "@types/mapbox-gl": "1.10.1",
