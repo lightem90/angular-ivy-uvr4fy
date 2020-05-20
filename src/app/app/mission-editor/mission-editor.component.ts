@@ -21,15 +21,26 @@ export class MissionEditorComponent implements OnInit {
     this.missionTypes = Object.values(MissionType).filter(x => typeof x === 'string')
 
     this.missionForm = _fb.group({
+
       missionName: ["", [	
-          Validators.maxLength(256),
+          Validators.maxLength(64),
           Validators.required]
         ],
+
       missionDate: [new Date(), [
         Validators.required
       ]],
+
       missionType : ["",
         Validators.required        
+      ],
+
+      missionTimepicker : ["",
+        Validators.required ],
+
+      missionDesc : ["", [
+          Validators.maxLength(64)
+        ]
       ]
     })
   }

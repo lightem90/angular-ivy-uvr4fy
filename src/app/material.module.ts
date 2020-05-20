@@ -1,23 +1,27 @@
 import { NgModule } from '@angular/core';
 
-import { MatToolbarModule} from '@angular/material/toolbar'
-import { MatIconModule} from '@angular/material/icon'
-import { MatSliderModule } from '@angular/material/slider';
+import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatIconModule} from '@angular/material/icon'
+import {MatSliderModule } from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import {  MatSidenavModule} from '@angular/material/sidenav';
+import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FlexLayoutModule } from '@angular/flex-layout';
+import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { MatRadioModule } from '@angular/material/radio';
+import {MatRadioModule } from '@angular/material/radio';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { MatNativeDateModule } from '@angular/material/core';
+import {MatNativeDateModule } from '@angular/material/core';
+
+//restore NgxMaterialTimepickerModule if it works on stackblitz 
+import { MaterialTimePickerModule } from 'candidosales/material-time-picker';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 
 
@@ -40,7 +44,9 @@ import { MatNativeDateModule } from '@angular/material/core';
         MatSelectModule,
         MatSlideToggleModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        NgxMaterialTimepickerModule.setLocale('it-IT'),
+        MaterialTimePickerModule        
     ],
     exports: [
         MatSliderModule,
@@ -59,7 +65,9 @@ import { MatNativeDateModule } from '@angular/material/core';
         MatDividerModule,
         MatSelectModule,
         MatSlideToggleModule,
-        MatDatepickerModule
+        MatDatepickerModule,
+        NgxMaterialTimepickerModule,
+        MaterialTimePickerModule
     ]
 })
 export class MaterialModule { }

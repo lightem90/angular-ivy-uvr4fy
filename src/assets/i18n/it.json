@@ -1,1 +1,14 @@
-{ }
+{ 
+  "missionDate" : "Giorno della missione",
+  "missionType": "Tipo missione",
+  "confirmMission": "Conferma",
+  "missionName" : "Nome della missione",
+  "missionNamePlaceholder" : "Nome della missione",
+  "requiredField" : "Campo obbligatorio",
+  "missionDesc" : "Descrizione",
+  "missionDescPlaceholder" : "Descrivi brevemente in cosa consiste la missione e se è necessaria dell'attrezzatura",
+  "missionTimepicker" : "Ora di incontro",
+  "Garbage" : "Raccolta rifiuti",
+  "Assistance" : "Assistenza personale",
+  "GreenMaintenance" : "Manutenzione del verde"
+}

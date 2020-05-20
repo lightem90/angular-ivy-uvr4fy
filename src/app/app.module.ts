@@ -33,7 +33,7 @@ import { MissionViewerComponent } from './app/mission-viewer/mission-viewer.comp
 import { AccountService } from './core/service/account.service';
 import { MissionService } from './core/service/mission.service';
 import { FirebaseHelper } from './core/service/firebase-helper';
-import { MapboxHelper } from './core/service/mapbo-helper';
+import { MapboxHelper } from './core/service/mapbox-helper';
 
 
 if (!firebase.apps.length) {

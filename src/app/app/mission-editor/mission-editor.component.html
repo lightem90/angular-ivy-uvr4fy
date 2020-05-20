@@ -3,39 +3,83 @@
     <mat-form-field appearance="outline">
      <mat-label>{{'missionName' | translate}}</mat-label>
       <input matInput 
+        required
         type="text"
         formControlName="missionName" 
         placeholder="{{ 'missionNamePlaceholder' | translate }}">
       <mat-error *ngIf="missionForm.controls.missionName.hasError('required')">
-        {{'missionNameRequred' | translate}}
+        {{'requiredField' | translate}}
       </mat-error>
-      <!--
-      <mat-error *ngIf="registerForm.controls.emailFormControl.hasError('required')">
-        {{'emailLoginRequired' | translate}}
-      </mat-error> -->
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>{{'missionDate' | translate}}</mat-label>
-      <input matInput 
+      <input 
+        required 
+        matInput 
         formControlName="missionDate" 
-        [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+        [matDatepicker]="datepicker">
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker></mat-datepicker>
+      
+      <mat-error *ngIf="missionForm.controls.missionDate.hasError('required')">
+        {{'requiredField' | translate}}
+      </mat-error>
+
     </mat-form-field>
 
     
     <mat-form-field appearance="outline">
       <mat-label>{{'missionType' | translate}}</mat-label>
-      <mat-select formControlName="missionType">
+      <mat-select  
+        required
+        formControlName="missionType">
         <mat-option *ngFor="let mtype of missionTypes" [value]="mtype">
           {{mtype | translate}}
         </mat-option>
       </mat-select>
+      
+      <mat-error *ngIf="missionForm.controls.missionType.hasError('required')">
+        {{'requiredField' | translate}}
+      </mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'missionTimepicker' | translate }}</mat-label>
+      <input  
+        matInput 
+        required
+        [ngxTimepicker]="timepicker" 
+        [format]="24" 
+        placeholder="{{ 'missionTimepicker' | translate }}" 
+        formControlName="missionTimepicker" />
+        
+      <mat-error *ngIf="missionForm.controls.missionTimepicker.hasError('required')">
+        {{'requiredField' | translate}}
+      </mat-error>
+
+    </mat-form-field>
+    <ngx-material-timepicker #timepicker></ngx-material-timepicker>
+
+    
+    <mat-form-field appearance="outline">
+     <mat-label>{{'missionDesc' | translate}}</mat-label>
+      <input 
+        matInput 
+        required
+        type="text"
+        formControlName="missionDesc"
+        placeholder="{{ 'missionDescPlaceholder' | translate }}">
+        
+      <mat-error *ngIf="missionForm.controls.missionDesc.hasError('required')">
+        {{'requiredField' | translate}}
+      </mat-error>
+
     </mat-form-field>
 
     <br>
-    
-    <button type="submit" mat-flat-button color="primary">{{'conferma' | translate}}</button>
+
+    <button type="submit" mat-flat-button color="primary">{{'confirmMission' | translate}}</button>
   </form>
 </div>
