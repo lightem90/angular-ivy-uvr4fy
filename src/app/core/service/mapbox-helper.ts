@@ -5,7 +5,43 @@ import mapboxgl = require('mapbox-gl');
 import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 @Injectable()
-export class MapboxHelper
-{
+export class MapboxHelper {
+
+  constructor() {    
+    mapboxgl.accessToken = environment.mapbox.accessToken;
+  }
+
+  createMarkersMap(style, zoom, lng, lat) {
+    
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: style,
+        zoom: zoom,
+        center: [lng, lat]
+    })
+    // Add map controls
+    map.addControl(new mapboxgl.NavigationControl())
+
+    map.on('load', (event) => {
+      map.addSource('firebase', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: []
+        }
+      })
+    })
+
+    const source = map.getSource('firebase') 
+
+    return {
+      map : map,
+      source : source
+    }
+  }
+
+  debugEnabled() {
+    return !environment.production
+  }
 
 }

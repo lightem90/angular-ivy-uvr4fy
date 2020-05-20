@@ -33,6 +33,7 @@ import { MissionViewerComponent } from './app/mission-viewer/mission-viewer.comp
 import { AccountService } from './core/service/account.service';
 import { MissionService } from './core/service/mission.service';
 import { FirebaseHelper } from './core/service/firebase-helper';
+import { MapboxHelper } from './core/service/mapbo-helper';
 
 
 if (!firebase.apps.length) {
@@ -73,7 +74,7 @@ export function translateHttpLoaderFactory(http: HttpClient) {
     AboutComponent, 
     FaqComponent, 
     ContactsComponent],
-  providers: [FirebaseHelper, AccountService, MissionService],
+  providers: [FirebaseHelper, AccountService, MissionService, MapboxHelper],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { environment } from '../../../environments/environment';
-
 import mapboxgl = require('mapbox-gl');
+
 import { MissionService } from '../../core/service/mission.service';
 import { FeatureCollection } from '../../core/domain/geojson';
+import { MapboxHelper } from '../../core/service/mapbox-helper';
 
 @Component({
   selector: 'app-mission-map',
@@ -15,40 +15,28 @@ export class MissionMapComponent implements OnInit {
   
   source : any;
   map: mapboxgl.Map;
+
   style = 'mapbox://styles/mapbox/streets-v11';
   lat = 43.9092;
   lng = 12.9127;
   zoom = 12.89
 
   constructor(
-    private _missionService : MissionService) {
+    private _missionService : MissionService,
+    private _mapboxHelper: MapboxHelper) {
 
   }
 
   ngOnInit() {    
     
-    mapboxgl.accessToken = environment.mapbox.accessToken;
-
-    this.map = new mapboxgl.Map({
-        container: 'map',
-        style: this.style,
-        zoom: this.zoom,
-        center: [this.lng, this.lat]
-    })
-    // Add map controls
-    this.map.addControl(new mapboxgl.NavigationControl())
-
-    this.map.on('load', (event) => {
-      this.map.addSource('firebase', {
-        type: 'geojson',
-        data: {
-          type: 'FeatureCollection',
-          features: []
-        }
-      })
-    })
-
-    this.source = this.map.getSource('firebase') 
+    const res = this._mapboxHelper.createMarkersMap(
+        this.style, 
+        this.zoom, 
+        this.lng, 
+        this.lat)
+    
+    this.map = res.map;
+    this.source = res.source;
 
     if (this._debugEnabled()){    
         this.map.on('mousemove', (data) => {
@@ -72,7 +60,7 @@ export class MissionMapComponent implements OnInit {
   }
 
   _debugEnabled() {
-    return !environment.production
+    return this._mapboxHelper.debugEnabled()
   }
 
 }
