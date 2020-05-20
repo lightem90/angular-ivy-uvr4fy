@@ -19,8 +19,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatNativeDateModule } from '@angular/material/core';
 
-//restore NgxMaterialTimepickerModule if it works on stackblitz 
-import { MaterialTimePickerModule } from 'candidosales/material-time-picker';
+//looks like is not working on stackblitz
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 
@@ -45,8 +44,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
         MatSlideToggleModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        NgxMaterialTimepickerModule.setLocale('it-IT'),
-        MaterialTimePickerModule        
+        NgxMaterialTimepickerModule.setLocale('it-IT')
     ],
     exports: [
         MatSliderModule,
@@ -66,8 +64,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
         MatSelectModule,
         MatSlideToggleModule,
         MatDatepickerModule,
-        NgxMaterialTimepickerModule,
-        MaterialTimePickerModule
+        NgxMaterialTimepickerModule
     ]
 })
 export class MaterialModule { }
