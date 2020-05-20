@@ -1,0 +1,30 @@
+<div>
+  <form [formGroup]="missionForm" (ngSubmit)="confirm()">
+    <mat-form-field appearance="outline">
+     <mat-label>{{'missionName' | translate}}</mat-label>
+      <input matInput 
+        type="text"
+        formControlName="missionName" 
+        placeholder="{{ 'missionNamePlaceholder' | translate }}">
+      <mat-hint>{{'missionNameHint' | translate}}</mat-hint>
+      <mat-error *ngIf="missionForm.controls.missionName.hasError('required')">
+        {{'missionNameRequred' | translate}}
+      </mat-error>
+      <!--
+      <mat-error *ngIf="registerForm.controls.emailFormControl.hasError('required')">
+        {{'emailLoginRequired' | translate}}
+      </mat-error> -->
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{'missionDate' | translate}}</mat-label>
+      <input matInput 
+        formControlName="missionDate" 
+        [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button type="submit" mat-flat-button color="primary">{{'conferma' | translate}}</button>
+  </form>
+</div>

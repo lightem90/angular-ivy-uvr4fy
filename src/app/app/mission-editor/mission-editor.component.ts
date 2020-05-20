@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-mission-editor',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MissionEditorComponent implements OnInit {
 
-  constructor() { }
+  missionForm : FormGroup
+
+  constructor(
+    private _fb : FormBuilder) { 
+
+  this.missionForm = _fb.group({
+    missionName: ["", [	
+        Validators.maxLength(256),
+        Validators.required]
+      ],
+    missionDate: [new Date(), [
+      Validators.required
+    ]]
+  })
+  }
 
   ngOnInit() {
+  }
+
+  confirm() {
+
   }
 
 }

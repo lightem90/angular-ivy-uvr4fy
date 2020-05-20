@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {  MatSidenavModule} from '@angular/material/sidenav';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -16,6 +17,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -37,6 +39,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
         MatDividerModule,
         MatSelectModule,
         MatSlideToggleModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
     exports: [
         MatSliderModule,
@@ -54,7 +58,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
         MatCardModule,
         MatDividerModule,
         MatSelectModule,
-        MatSlideToggleModule
+        MatSlideToggleModule,
+        MatDatepickerModule
     ]
 })
 export class MaterialModule { }
