@@ -25,6 +25,16 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
+    
+    <mat-form-field appearance="outline">
+      <mat-label>{{'missionType' | translate}}</mat-label>
+      <mat-select formControlName="missionType">
+        <mat-option *ngFor="let mtype of missionTypes" [value]="mtype">
+          {{mtype | translate}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <button type="submit" mat-flat-button color="primary">{{'conferma' | translate}}</button>
   </form>
 </div>

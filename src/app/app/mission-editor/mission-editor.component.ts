@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import * as MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-import mapboxgl = require('mapbox-gl');
+import { MissionType } from '../../core/domain/mission';
 
-import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-mission-editor',
   templateUrl: './mission-editor.component.html',
@@ -12,10 +11,14 @@ import { environment } from '../../../environments/environment';
 })
 export class MissionEditorComponent implements OnInit {
 
+  missionTypes = []
   missionForm : FormGroup
+  selectedMissionType : string 
 
   constructor(
     private _fb : FormBuilder) { 
+
+    this.missionTypes = Object.values(MissionType).filter(x => typeof x === 'string')
 
     this.missionForm = _fb.group({
       missionName: ["", [	
@@ -24,21 +27,18 @@ export class MissionEditorComponent implements OnInit {
         ],
       missionDate: [new Date(), [
         Validators.required
-      ]]
+      ]],
+      missionType : ["",
+        Validators.required        
+      ]
     })
-
-    const geocoder = new MapboxGeocoder({
-      accessToken: environment.mapbox.accessToken,
-      mapboxgl : mapboxgl
-    })
-
   }
 
   ngOnInit() {
   }
 
   confirm() {
-
+    //console.log(this.missionForm.get('missionType').value)
   }
 
 }
