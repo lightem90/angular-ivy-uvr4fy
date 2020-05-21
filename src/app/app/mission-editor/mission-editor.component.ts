@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { MissionType } from '../../core/domain/mission';
 import { MapboxHelper } from '../../core/service/mapbox-helper';
 
 import mapboxgl = require('mapbox-gl');
+import MapboxGeocoder = require('@mapbox/mapbox-gl-geocoder');
 
 
 @Component({
@@ -14,12 +15,15 @@ import mapboxgl = require('mapbox-gl');
 })
 export class MissionEditorComponent implements OnInit {
 
+  @ViewChild("geocoder") geocoderRef : ElementRef
+
   missionTypes = []
   missionForm : FormGroup
   selectedMissionType : string 
 
   picker : mapboxgl.Marker;
   map: mapboxgl.Map;
+  geocoder : MapboxGeocoder
 
   style = 'mapbox://styles/mapbox/streets-v11';
   @Input() lat : number = 43.9092
@@ -63,14 +67,20 @@ export class MissionEditorComponent implements OnInit {
         this.style, 
         this.zoom, 
         this.lng, 
-        this.lat,
-        true)
-    
+        this.lat)
+
     this.map = res.map;
 
     this.picker = new mapboxgl.Marker()
       .setLngLat([this.lng, this.lat])
       .addTo(this.map)
+    
+    this.geocoder = this._mapboxHelper.createGeocoder(false)
+    this.geocoder.addTo("#geocoder")
+    this.geocoder.on('result', ev => this.map.flyTo({
+      center: ev.result.center,
+      essential : true
+    }))
 
     //in this way the picker stays in the same position
     this.map

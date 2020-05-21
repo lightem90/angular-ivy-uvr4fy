@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, ViewChild, ElementRef } from "@angular/core";
 import { environment } from '../../../environments/environment';
 
 import mapboxgl = require('mapbox-gl');
@@ -7,11 +7,12 @@ import MapboxGeocoder = require('@mapbox/mapbox-gl-geocoder');
 @Injectable()
 export class MapboxHelper {
 
+
   constructor() {    
     mapboxgl.accessToken = environment.mapbox.accessToken;
   }
 
-  createMap(style, zoom, lng, lat, addGeocoder: boolean = false) {
+  createMap(style, zoom, lng, lat) {
     
     const map = new mapboxgl.Map({
         container: 'map',
@@ -21,14 +22,6 @@ export class MapboxHelper {
     })
     // Add map controls
     map.addControl(new mapboxgl.NavigationControl())
-    if (addGeocoder) {
-      map.addControl(new MapboxGeocoder({      
-          accessToken: environment.mapbox.accessToken,  
-          countries: 'it',
-          mapboxgl: mapboxgl
-        })
-      )
-    }
 
     map.on('load', (event) => {
       map.addSource('firebase', {
@@ -46,6 +39,17 @@ export class MapboxHelper {
       map : map,
       source : source
     }
+  }
+
+  createGeocoder(addPicker: boolean = false) {
+
+    return new MapboxGeocoder({      
+      accessToken: environment.mapbox.accessToken,  
+      countries: 'it',
+      mapboxgl: mapboxgl,
+      marker : addPicker
+    })
+
   }
 
   debugEnabled() {

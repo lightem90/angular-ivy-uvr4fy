@@ -1,6 +1,20 @@
 .picker-map{
   width: 400px;
   height: 200px;
+  margin-top: 75px;
+}
+
+.geocoder {
+  position: relative;
+  z-index: 1;
+  width: 50%;
+  left: 50%;
+  margin-left: -25%;
+  top: 10px;
+  background-color:limegreen;
+}
+.mapboxgl-ctrl-geocoder {
+  min-width: 100%;
 }
 
 .mapboxgl-marker {
