@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 import { MissionType } from '../../core/domain/mission';
 import { MapboxHelper } from '../../core/service/mapbox-helper';
@@ -7,6 +8,14 @@ import { MapboxHelper } from '../../core/service/mapbox-helper';
 import mapboxgl = require('mapbox-gl');
 import MapboxGeocoder = require('@mapbox/mapbox-gl-geocoder');
 
+export class DialogData {
+  constructor(
+  public zoom : number,
+  public latitude : number,
+  public longitude : number) {
+
+  }
+}
 
 @Component({
   selector: 'app-mission-editor',
@@ -14,8 +23,6 @@ import MapboxGeocoder = require('@mapbox/mapbox-gl-geocoder');
   styleUrls: ['./mission-editor.component.css']
 })
 export class MissionEditorComponent implements OnInit {
-
-  @ViewChild("geocoder") geocoderRef : ElementRef
 
   missionTypes = []
   missionForm : FormGroup
@@ -26,14 +33,14 @@ export class MissionEditorComponent implements OnInit {
   geocoder : MapboxGeocoder
 
   style = 'mapbox://styles/mapbox/streets-v11';
-  @Input() lat : number = 43.9092
-  @Input() lng : number = 12.9127
-  @Input() zoom : number = 12.89
+  
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    public dialogRef: MatDialogRef<MissionEditorComponent>,
     private _fb : FormBuilder,
-    private _mapboxHelper: MapboxHelper) { 
-
+    private _mapboxHelper: MapboxHelper) {
+      
     this.missionTypes = Object.values(MissionType).filter(x => typeof x === 'string')
 
     this.missionForm = _fb.group({
@@ -65,14 +72,14 @@ export class MissionEditorComponent implements OnInit {
     
     const res = this._mapboxHelper.createMap(
         this.style, 
-        this.zoom, 
-        this.lng, 
-        this.lat)
+        this.data.zoom, 
+        this.data.longitude, 
+        this.data.latitude)
 
     this.map = res.map;
 
     this.picker = new mapboxgl.Marker()
-      .setLngLat([this.lng, this.lat])
+      .setLngLat([this.data.longitude, this.data.latitude])
       .addTo(this.map)
     
     this.geocoder = this._mapboxHelper.createGeocoder()
@@ -91,6 +98,10 @@ export class MissionEditorComponent implements OnInit {
 
   confirm() {
     //console.log(this.missionForm.get('missionType').value)
+  }  
+
+  onNoClick(): void {
+    this.dialogRef.close()
   }
 
   _updatePickerPosition() {

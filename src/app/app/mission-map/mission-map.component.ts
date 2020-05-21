@@ -5,6 +5,9 @@ import mapboxgl = require('mapbox-gl');
 import { MissionService } from '../../core/service/mission.service';
 import { FeatureCollection } from '../../core/domain/geojson';
 import { MapboxHelper } from '../../core/service/mapbox-helper';
+import { MissionEditorComponent, DialogData } from '../mission-editor/mission-editor.component';
+
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-mission-map',
@@ -22,6 +25,7 @@ export class MissionMapComponent implements OnInit {
   zoom = 12.89
 
   constructor(
+    private _dialog: MatDialog,
     private _missionService : MissionService,
     private _mapboxHelper: MapboxHelper) {
 
@@ -60,7 +64,14 @@ export class MissionMapComponent implements OnInit {
   }
 
   startMission() {
-    
+    this._dialog.open(MissionEditorComponent, {
+      width: '250px',
+      data: new DialogData(
+        this.map.getZoom(),
+        this.map.getCenter().lat,
+        this.map.getCenter().lng
+      ) 
+    })
   }
 
   _debugEnabled() {
