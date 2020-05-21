@@ -29,11 +29,12 @@ export class MissionMapComponent implements OnInit {
 
   ngOnInit() {    
     
-    const res = this._mapboxHelper.createMarkersMap(
+    const res = this._mapboxHelper.createMap(
         this.style, 
         this.zoom, 
         this.lng, 
-        this.lat)
+        this.lat,
+        true)
     
     this.map = res.map;
     this.source = res.source;
@@ -57,6 +58,10 @@ export class MissionMapComponent implements OnInit {
       //   .setLngLat([m.meetingPoint.longitude, m.meetingPoint.latitude])
       //   .addTo(this.map)
       // })    
+  }
+
+  startMission() {
+    
   }
 
   _debugEnabled() {

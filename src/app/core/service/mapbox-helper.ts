@@ -11,7 +11,7 @@ export class MapboxHelper {
     mapboxgl.accessToken = environment.mapbox.accessToken;
   }
 
-  createMarkersMap(style, zoom, lng, lat) {
+  createMap(style, zoom, lng, lat, addGeocoder: boolean = false) {
     
     const map = new mapboxgl.Map({
         container: 'map',
@@ -21,6 +21,9 @@ export class MapboxHelper {
     })
     // Add map controls
     map.addControl(new mapboxgl.NavigationControl())
+    if (addGeocoder) {
+      map.addControl(new MapboxGeocoder())
+    }
 
     map.on('load', (event) => {
       map.addSource('firebase', {

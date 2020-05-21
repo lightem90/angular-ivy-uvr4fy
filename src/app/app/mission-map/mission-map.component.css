@@ -15,6 +15,16 @@
     position: absolute;
 }
 
+.missionStarterDiv{  
+  display: block;
+  position: absolute;
+  margin: 0px auto;
+  width: 10%;
+  padding: 10px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
 
 #info {
