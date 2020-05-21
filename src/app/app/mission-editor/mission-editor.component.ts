@@ -85,16 +85,26 @@ export class MissionEditorComponent implements OnInit {
     
     this.geocoder = this._mapboxHelper.createGeocoder()
     this.geocoder.addTo("#geocoder")
-    this.geocoder.on('result', ev => this.map.flyTo({
-      center: ev.result.center,
-      essential : true
-    }))
+    this.geocoder.on('result', ev => 
+      {
+        this.map.flyTo({
+          center: ev.result.center,
+          essential : true})
+      }
+    )
 
     //in this way the picker stays in the same position
     this.map
       .on('movestart', _ => this._updatePickerPosition())
       .on('move', _ => this._updatePickerPosition())
       .on('moveend', _ => this._updatePickerPosition())
+  }
+
+  confirmPickerPosition() {
+    // this.geocoder.reverseQuery(
+    //   this.picker.getLngLat(), 
+    //   res => console.log(res)
+    // );
   }
 
   confirm() {

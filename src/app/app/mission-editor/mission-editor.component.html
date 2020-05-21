@@ -1,7 +1,7 @@
 <div id="form" fxLayout="column" fxLayoutAlign="space-around none" >
   <form [formGroup]="missionForm" (ngSubmit)="confirm()">
     <div id="formField" fxLayout="row">
-      <mat-icon>error</mat-icon>
+      <mat-icon>public</mat-icon>
       <mat-form-field appearance="outline">
         <mat-label>{{'missionName' | translate}}</mat-label>
           <input matInput 
@@ -16,6 +16,7 @@
     </div>
     
     <div id="formField" fxLayout="row">
+      <mat-icon>emoji_nature</mat-icon>
       <mat-form-field appearance="outline">
         <mat-label>{{'missionType' | translate}}</mat-label>
         <mat-select  
@@ -34,6 +35,7 @@
     </div>
     
     <div id="formField" fxLayout="row">
+      <mat-icon>date_range</mat-icon>
       <mat-form-field appearance="outline">
         <mat-label>{{'missionDate' | translate}}</mat-label>
         <input 
@@ -52,6 +54,7 @@
     </div>
     
     <div id="formField" fxLayout="row">
+      <mat-icon>hourglass_empty</mat-icon>
       <mat-form-field appearance="outline">
         <mat-label>{{ 'missionTimepicker' | translate }}</mat-label>
         <input  
@@ -72,11 +75,21 @@
 
     
     <div id="formField">
+      <mat-icon>my_location</mat-icon>
       <div id="geocoder" class="geocoder" #geocoder></div>
       <div id="picker_map" class="picker-map"></div>
     </div>
     
     <div id="formField" fxLayout="row">
+      <button 
+        mat-flat-button 
+        color="primary"
+        (click)="confirmPickerPosition()">{{'confirmPosition' | translate}}
+      </button>
+    </div>
+    
+    <div id="formField" fxLayout="row">
+      <mat-icon>event_note</mat-icon>
       <mat-form-field appearance="outline">
       <mat-label>{{'missionDesc' | translate}}</mat-label>
         <input 
