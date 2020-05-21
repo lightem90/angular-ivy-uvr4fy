@@ -75,7 +75,7 @@ export class MissionEditorComponent implements OnInit {
       .setLngLat([this.lng, this.lat])
       .addTo(this.map)
     
-    this.geocoder = this._mapboxHelper.createGeocoder(false)
+    this.geocoder = this._mapboxHelper.createGeocoder()
     this.geocoder.addTo("#geocoder")
     this.geocoder.on('result', ev => this.map.flyTo({
       center: ev.result.center,

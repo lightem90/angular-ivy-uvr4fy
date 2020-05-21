@@ -1,17 +1,20 @@
 .picker-map{
-  width: 400px;
+  min-width: 100%;
   height: 200px;
+  left: 50%;
+  right: 50%;
   margin-top: 75px;
+  margin-bottom: 45px;
 }
 
 .geocoder {
   position: relative;
   z-index: 1;
   width: 50%;
+  height: auto;
   left: 50%;
-  margin-left: -25%;
+  right: 50%;
   top: 10px;
-  background-color:limegreen;
 }
 .mapboxgl-ctrl-geocoder {
   min-width: 100%;
@@ -24,4 +27,20 @@
     border:1px solid gray;
     background-color:lightblue;
     position: absolute;
+}
+
+.mat-form-field{
+  width: 80%;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;  /* make main axis vertical */
+  justify-content: center; /* center items vertically, in this case */
+  align-items: center;     /* center items horizontally, in this case */
+}
+
+#formField {
+  width: 100%;
+  justify-content: center; /* center items vertically, in this case */
 }
