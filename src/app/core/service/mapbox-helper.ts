@@ -22,7 +22,12 @@ export class MapboxHelper {
     // Add map controls
     map.addControl(new mapboxgl.NavigationControl())
     if (addGeocoder) {
-      map.addControl(new MapboxGeocoder())
+      map.addControl(new MapboxGeocoder({        
+          countries: 'it',
+          accessToken: environment.mapbox.accessToken,
+          mapboxgl: mapboxgl
+        })
+      )
     }
 
     map.on('load', (event) => {
