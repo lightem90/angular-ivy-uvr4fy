@@ -37,7 +37,8 @@ export class MissionMapComponent implements OnInit {
         this.style, 
         this.zoom, 
         this.lng, 
-        this.lat)
+        this.lat,
+        'map')
     
     this.map = res.map;
     this.source = res.source;
@@ -65,7 +66,8 @@ export class MissionMapComponent implements OnInit {
 
   startMission() {
     this._dialog.open(MissionEditorComponent, {
-      width: '250px',
+    minWidth: '85vw',
+    height: '85vh',
       data: new DialogData(
         this.map.getZoom(),
         this.map.getCenter().lat,

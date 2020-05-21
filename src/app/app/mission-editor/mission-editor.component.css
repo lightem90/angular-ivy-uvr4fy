@@ -1,8 +1,6 @@
 .picker-map{
-  min-width: 100%;
-  height: 200px;
-  left: 50%;
-  right: 50%;
+  height: 500px;
+  width: 200px;
   margin-top: 75px;
   margin-bottom: 45px;
 }
@@ -31,6 +29,15 @@
 
 .mat-form-field{
   width: 80%;
+}
+.cdk-overlay-pane {
+    max-width: none !important;
+    flex: 1 1 100%;
+    height: 100%;
+  }
+.mat-dialog-content {
+  max-height: none !important;
+  flex: auto;
 }
 
 #form {

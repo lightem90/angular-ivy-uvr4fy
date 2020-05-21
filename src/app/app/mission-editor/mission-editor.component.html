@@ -73,7 +73,7 @@
     
     <div id="formField">
       <div id="geocoder" class="geocoder" #geocoder></div>
-      <div class="map" id="map" class="picker-map"></div>
+      <div id="picker_map" class="picker-map"></div>
     </div>
     
     <div id="formField" fxLayout="row">
@@ -93,6 +93,18 @@
       </mat-form-field>
     </div>
 
-    <button type="submit" mat-flat-button color="primary">{{'confirmMission' | translate}}</button>
+    <div id="formField" fxLayout="row">
+      <button 
+        type="submit" 
+        mat-flat-button 
+        color="primary">
+        {{'confirmMission' | translate}}
+      </button>
+      <button 
+        (click)="abort()"
+        mat-flat-button>
+        {{'abortMission' | translate}}
+      </button>
+    </div>
   </form>
 </div>

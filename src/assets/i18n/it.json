@@ -11,5 +11,6 @@
   "Garbage" : "Raccolta rifiuti",
   "Assistance" : "Assistenza personale",
   "GreenMaintenance" : "Manutenzione del verde",
-  "addMission" : "Inizia missione!"
+  "addMission" : "Inizia missione!",
+  "abortMission" : "Annulla"
 }

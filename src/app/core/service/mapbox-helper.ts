@@ -12,10 +12,10 @@ export class MapboxHelper {
     mapboxgl.accessToken = environment.mapbox.accessToken;
   }
 
-  createMap(style, zoom, lng, lat) {
+  createMap(style, zoom, lng, lat, container) {
     
     const map = new mapboxgl.Map({
-        container: 'map',
+        container: container,
         style: style,
         zoom: zoom,
         center: [lng, lat]

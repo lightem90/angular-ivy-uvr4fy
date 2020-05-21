@@ -40,7 +40,7 @@ export class MissionEditorComponent implements OnInit {
     public dialogRef: MatDialogRef<MissionEditorComponent>,
     private _fb : FormBuilder,
     private _mapboxHelper: MapboxHelper) {
-      
+
     this.missionTypes = Object.values(MissionType).filter(x => typeof x === 'string')
 
     this.missionForm = _fb.group({
@@ -74,7 +74,8 @@ export class MissionEditorComponent implements OnInit {
         this.style, 
         this.data.zoom, 
         this.data.longitude, 
-        this.data.latitude)
+        this.data.latitude,
+        'picker_map')
 
     this.map = res.map;
 
@@ -107,6 +108,10 @@ export class MissionEditorComponent implements OnInit {
   _updatePickerPosition() {
     this.picker.setLngLat(this.map.getCenter());
     //TODO geocoding
+  }
+
+  abort() {
+    this.dialogRef.close()
   }
 
 }
