@@ -33,8 +33,7 @@ export class MissionMapComponent implements OnInit {
         this.style, 
         this.zoom, 
         this.lng, 
-        this.lat,
-        true)
+        this.lat)
     
     this.map = res.map;
     this.source = res.source;

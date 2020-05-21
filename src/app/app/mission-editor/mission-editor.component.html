@@ -11,23 +11,6 @@
         {{'requiredField' | translate}}
       </mat-error>
     </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>{{'missionDate' | translate}}</mat-label>
-      <input 
-        required 
-        matInput 
-        formControlName="missionDate" 
-        [matDatepicker]="datepicker">
-      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-      <mat-datepicker #datepicker></mat-datepicker>
-      
-      <mat-error *ngIf="missionForm.controls.missionDate.hasError('required')">
-        {{'requiredField' | translate}}
-      </mat-error>
-
-    </mat-form-field>
-
     
     <mat-form-field appearance="outline">
       <mat-label>{{'missionType' | translate}}</mat-label>
@@ -40,6 +23,22 @@
       </mat-select>
       
       <mat-error *ngIf="missionForm.controls.missionType.hasError('required')">
+        {{'requiredField' | translate}}
+      </mat-error>
+
+    </mat-form-field>    
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{'missionDate' | translate}}</mat-label>
+      <input 
+        required 
+        matInput 
+        formControlName="missionDate" 
+        [matDatepicker]="datepicker">
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker></mat-datepicker>
+      
+      <mat-error *ngIf="missionForm.controls.missionDate.hasError('required')">
         {{'requiredField' | translate}}
       </mat-error>
 
@@ -62,6 +61,7 @@
     </mat-form-field>
     <ngx-material-timepicker #timepicker></ngx-material-timepicker>
 
+    <div class="map" id="map" class="picker-map"></div>
     
     <mat-form-field appearance="outline">
      <mat-label>{{'missionDesc' | translate}}</mat-label>

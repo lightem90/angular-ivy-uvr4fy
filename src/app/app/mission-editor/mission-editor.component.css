@@ -1,0 +1,13 @@
+.picker-map{
+  width: 200px;
+  height: 100px;
+}
+
+.mapboxgl-marker {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border:1px solid gray;
+    background-color:lightblue;
+    position: absolute;
+}
