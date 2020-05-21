@@ -15,7 +15,6 @@
     "@angular/platform-browser": "9.1.7",
     "@angular/platform-browser-dynamic": "9.1.7",
     "@angular/router": "9.1.7",
-    "@candidosales/material-time-picker": "2.0.0",
     "@firebase/app": "0.6.3",
     "@mapbox/mapbox-gl-geocoder": "^4.5.1",
     "@ngx-translate/core": "12.1.2",
@@ -26,6 +25,7 @@
     "firebase": "7.14.4",
     "luxon": "^1.24.1",
     "mapbox-gl": "1.10.1",
+    "ngx-material-timepicker": "^5.5.2",
     "rxjs": "6.5.5",
     "tslib": "1.13.0",
     "zone.js": "0.10.3"
