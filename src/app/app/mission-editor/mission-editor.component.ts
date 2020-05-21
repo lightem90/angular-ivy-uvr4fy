@@ -31,6 +31,7 @@ export class MissionEditorComponent implements OnInit {
   picker : mapboxgl.Marker;
   map: mapboxgl.Map;
   geocoder : MapboxGeocoder
+  reverseGeocoder : MapboxGeocoder
 
   style = 'mapbox://styles/mapbox/streets-v11';
   
@@ -85,13 +86,20 @@ export class MissionEditorComponent implements OnInit {
     
     this.geocoder = this._mapboxHelper.createGeocoder()
     this.geocoder.addTo("#geocoder")
-    this.geocoder.on('result', ev => 
-      {
+    this.geocoder.on('result', ev => {
         this.map.flyTo({
           center: ev.result.center,
           essential : true})
       }
     )
+
+    this.reverseGeocoder = this._mapboxHelper
+      .createGeocoder(true)
+      .on('result', ev => {  
+          console.log("res " + ev.result)
+        }
+      )
+    this.reverseGeocoder.addTo(this.map)
 
     //in this way the picker stays in the same position
     this.map
@@ -101,10 +109,14 @@ export class MissionEditorComponent implements OnInit {
   }
 
   confirmPickerPosition() {
-    // this.geocoder.reverseQuery(
-    //   this.picker.getLngLat(), 
-    //   res => console.log(res)
-    // );
+    const query = this._mapboxHelper.buildReverseGeocodingQuery(
+        this.picker.getLngLat().lng,
+        this.picker.getLngLat().lat
+      )
+    console.log(query)
+    this.reverseGeocoder.query(
+      query
+    );
   }
 
   confirm() {

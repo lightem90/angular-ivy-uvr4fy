@@ -41,15 +41,22 @@ export class MapboxHelper {
     }
   }
 
-  createGeocoder(addPicker: boolean = false) {
+  createGeocoder(
+    reverse: boolean = false,
+    addPicker: boolean = false) {
 
     return new MapboxGeocoder({      
       accessToken: environment.mapbox.accessToken,  
       countries: 'it',
       mapboxgl: mapboxgl,
-      marker : addPicker
+      marker : addPicker,
+      reverseGeocode: reverse
     })
+  }
 
+  buildReverseGeocodingQuery(lng, lat){
+    return "https://api.mapbox.com/geocoding/v5/mapbox.places/12.92123340684202%2C43.91075125833041.json?access_token=pk.eyJ1Ijoic2VhcmNoLW1hY2hpbmUtdXNlci0xIiwiYSI6ImNrN2Y1Nmp4YjB3aG4zZ253YnJoY21kbzkifQ.JM5ZeqwEEm-Tonrk5wOOMw&cachebuster=1590091383003&autocomplete=true"
+    // return `https://api.mapbox.com/geocoding/v5/address/${lng}%2C${lat}.json?access_token=${environment.mapbox.accessToken}&cachebuster=1590091383003&autocomplete=true`
   }
 
   debugEnabled() {
