@@ -64,11 +64,10 @@ export class MissionEditorComponent implements OnInit {
         this.zoom, 
         this.lng, 
         this.lat,
-        false)
+        true)
     
     this.map = res.map;
 
-    console.log(this.lng)
     this.picker = new mapboxgl.Marker()
       .setLngLat([this.lng, this.lat])
       .addTo(this.map)
